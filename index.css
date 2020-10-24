@@ -13,13 +13,19 @@ html, body {
   align-items: center;
 }
 
+h1 {
+  color: #F7C603;
+  /* font-family: 'Monoton', cursive; */
+  font-family: 'Bungee Shade', cursive;
+  font-size: 80px;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
   width: 420px;
   height: 420px;
   background-color: white;
-  border: 1px solid;
 }
 
 .grid div {
