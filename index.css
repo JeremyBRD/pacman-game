@@ -49,32 +49,36 @@ h1 {
 }
 
 .pacman {
-  background-color: #F7C603;
-  border-radius: 7.5px;
+  content: url("images/pacman.png");
+  background-color: white;
   border: none;
 }
 
 .blinky {
-  background-color: red;
+  content: url("images/blinky.png");
+  background-color: white;
   border: none;
 }
 
 .pinky {
-  background-color: pink;
+  content: url("images/pinky.png");
+  background-color: white;
   border: none;
 }
 
 .inky {
-  background-color: blue;
+  content: url("images/inky.png");
+  background-color: white;
   border: none;
 }
 
 .clyde {
-  background-color: orange;
+  content: url("images/clyde.png");
+  background-color: white;
   border: none;
 }
 
 .scared-ghost {
-  background-color: aquamarine;
+  background-color: black;
   border: none;
 }
