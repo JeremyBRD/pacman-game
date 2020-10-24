@@ -1,8 +1,15 @@
+*, :before, :after {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
 html, body {
+  background: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
   display: flex;
   height: 100vh;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -11,6 +18,7 @@ html, body {
   flex-wrap: wrap;
   width: 420px;
   height: 420px;
+  background-color: white;
   border: 1px solid;
 }
 
