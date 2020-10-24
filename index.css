@@ -79,6 +79,7 @@ h1 {
 }
 
 .scared-ghost {
-  background-color: black;
+  content: url("images/scared-ghost.png");
+  background-color: white;
   border: none;
 }
