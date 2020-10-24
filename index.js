@@ -1,6 +1,8 @@
 const width = 28
 const grid = document.querySelector('.grid')
 const scoreDisplay = document.getElementById('score')
+const endMessage = document.getElementById('message')
+const overlay = document.querySelector('.overlay')
 let squares = []
 let score = 0
 
@@ -206,9 +208,10 @@ function checkForGameOver() {
       squares[pacmanCurrentIndex].classList.contains('ghost') && 
       !squares[pacmanCurrentIndex].classList.contains('scared-ghost') 
      ) {
-    ghosts.forEach(ghost => clearInterval(ghost.timerId))
-    document.removeEventListener('keyup', control)
-    scoreDisplay.innerHTML = 'You LOSE'
+      ghosts.forEach(ghost => clearInterval(ghost.timerId))
+      document.removeEventListener('keyup', control)
+      endMessage.innerHTML = 'You LOSE'
+      overlay.style.transform = 'translateY(0)'
      }
 }
 
@@ -217,6 +220,7 @@ function checkForWin() {
     if (score >= 274) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
       document.removeEventListener('keyup', control)
-      scoreDisplay.innerHTML = 'You WON!'
+      endMessage.innerHTML = 'You WON! 🎉'
+      overlay.style.transform = 'translateY(0)'
     }
 }

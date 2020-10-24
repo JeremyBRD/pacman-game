@@ -2,6 +2,7 @@
   margin: 0px;
   padding: 0px;
   text-decoration: none;
+  font-family: 'Spartan', sans-serif;
 }
 
 html, body {
@@ -20,22 +21,75 @@ h1 {
   font-size: 80px;
 }
 
+h3 {
+  color: #eae1ed;
+  margin-bottom: 8px;
+}
+
+.overlay {
+  display: flex;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-100%);
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.2);
+  transition: transform 0.5s;
+}
+
+.overlay span {
+  font-weight: 800;
+  color: #eae1ed;
+  font-size: 40px;
+}
+
+.call-to-action {
+  display: block;
+  margin: 30px auto 0;
+  font-size: 30px;
+  font-weight: lighter;
+  color: #333;
+  padding: 25px 80px;
+  background: #F7C603;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 6px #dbad08;
+}
+
+.call-to-action:hover {
+  box-shadow: 0 4px #dbad08;
+  top: 2px;
+}
+
+.call-to-action:active {
+  box-shadow: 0 0 #dbad08;
+  top: 6px;
+}
+/* Game */
+
 .grid {
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
   width: 420px;
   height: 420px;
-  background-color: white;
+  background-color: #eae1ed;
 }
 
-.grid div {
+.grid div:not(.overlay) {
+  transform: translateY(-2800%);
   width: 15px;
   height: 15px;
 }
 
 .pac-dot {
   background-color: green;
-  border: 5px solid white;
+  border: 5px solid #eae1ed;
   box-sizing: border-box;
 }
 
@@ -50,36 +104,37 @@ h1 {
 
 .pacman {
   content: url("images/pacman.png");
-  background-color: white;
+  background-color: #eae1ed;
   border: none;
+  transition: transform 0.3s;
 }
 
 .blinky {
   content: url("images/blinky.png");
-  background-color: white;
+  background-color: #eae1ed;
   border: none;
 }
 
 .pinky {
   content: url("images/pinky.png");
-  background-color: white;
+  background-color: #eae1ed;
   border: none;
 }
 
 .inky {
   content: url("images/inky.png");
-  background-color: white;
+  background-color: #eae1ed;
   border: none;
 }
 
 .clyde {
   content: url("images/clyde.png");
-  background-color: white;
+  background-color: #eae1ed;
   border: none;
 }
 
 .scared-ghost {
   content: url("images/scared-ghost.png");
-  background-color: white;
+  background-color: #eae1ed;
   border: none;
 }
