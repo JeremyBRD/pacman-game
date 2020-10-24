@@ -127,7 +127,7 @@ function control(e) {
     checkForWin()
     checkForGameOver()
 }
-document.addEventListener('keyup', control)
+document.addEventListener('keydown', control)
 
 
 function pacDotEaten() {
