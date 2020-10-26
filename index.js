@@ -1,10 +1,12 @@
-const width = 28
-const grid = document.querySelector('.grid')
-const scoreDisplay = document.getElementById('score')
-const endMessage = document.getElementById('message')
-const overlay = document.querySelector('.overlay')
-let squares = []
-let score = 0
+const width = 28;
+const grid = document.querySelector('.grid');
+const scoreDisplay = document.getElementById('score');
+const endMessage = document.getElementById('message');
+const overlay = document.querySelector('.overlay');
+let currentKeyCode;
+let squares = [];
+let score = 0;
+// let powerPeletTimer = 0;
 
 // Codes for map-items position
 // 0 - pacdots
@@ -42,7 +44,7 @@ const layout = [
   1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
   1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
   1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-]
+];
 
 //create board
 function createBoard() {
@@ -59,6 +61,8 @@ function createBoard() {
       squares[i].classList.add('ghost-lair')
     } else if (layout[i] === 3) {
       squares[i].classList.add('power-pellet')
+    } else if (layout[i] === 4) {
+      squares[i].classList.add('.empty-space')
     }
   }
 }
@@ -68,10 +72,23 @@ createBoard()
 let pacmanCurrentIndex = 490
 squares[pacmanCurrentIndex].classList.add('pacman')
 
+
+// const decrementPowerPeletTimer = () => {
+//   if (powerPeletTimer >= 1) {
+//     powerPeletTimer - 1000
+//   }
+// }
+// decrementPowerPeletTimer();
+// console.log(powerPeletTimer);
+
 function control(e) {
+  const pacman = document.querySelector('.pacman');
+  console.log(pacman);
+  currentKeyCode = e.keyCode
   squares[pacmanCurrentIndex].classList.remove('pacman')
   switch(e.keyCode) {
     case 40:
+    // if ( currentKeyCode === 40 ) { pacman.style.transform = 'rotate(90deg)' }
     if (
       !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair') &&
       !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
@@ -81,7 +98,7 @@ function control(e) {
     break
     case 38:
     if (
-      !squares[pacmanCurrentIndex -width].classList.contains('ghost-lair') &&
+      !squares[pacmanCurrentIndex - width].classList.contains('ghost-lair') &&
       !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
       pacmanCurrentIndex - width >=0
       ) 
@@ -115,29 +132,39 @@ function control(e) {
   powerPelletEaten()
   checkForWin()
   checkForGameOver()
+  scoreDisplay.innerHTML = score
 }
-document.addEventListener('keyup', control)
-
+document.addEventListener('keydown', control)
 
 function pacDotEaten() {
   if (squares[pacmanCurrentIndex].classList.contains('pac-dot')) {
     squares[pacmanCurrentIndex].classList.remove('pac-dot')
     score++
-    scoreDisplay.innerHTML = score
   }
 }
 
 function powerPelletEaten() {
   if (squares[pacmanCurrentIndex].classList.contains('power-pellet')) {
-    squares[pacmanCurrentIndex].classList.remove('power-pellet')
-    score +=10
-    ghosts.forEach(ghost => ghost.isScared = true)  
-    setTimeout(unScareGhosts, 10000)    
+    // setInterval(decrementPowerPeletTimer, 1000);
+    // if (powerPeletTimer >= 1) {
+    //   squares[pacmanCurrentIndex].classList.remove('power-pellet')
+    //   powerPeletTimer += 10000
+    //   score +=10
+    //   ghosts.forEach(ghost => ghost.isScared = true)  
+    //   setTimeout(unScareGhosts, powerPeletTimer)
+    // } 
+      squares[pacmanCurrentIndex].classList.remove('power-pellet')
+      // powerPeletTimer += 10000
+      score +=10
+      ghosts.forEach(ghost => ghost.isScared = true)  
+      setTimeout(unScareGhosts, 10000)
   }
+  // console.log(powerPeletTimer);
 }
 
 function unScareGhosts() {
   ghosts.forEach(ghost => ghost.isScared = false)
+  powerPelotTimer = 0;
 }
 
 

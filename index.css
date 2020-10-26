@@ -27,6 +27,7 @@ h3 {
 }
 
 .overlay {
+  position: absolute;
   display: flex;
   z-index: 2;
   width: 100%;
@@ -73,18 +74,22 @@ h3 {
 /* Game */
 
 .grid {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  width: 420px;
-  height: 420px;
+  width: 476px;
+  height: 476px;
   background-color: #eae1ed;
 }
 
 .grid div:not(.overlay) {
-  transform: translateY(-2800%);
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
+}
+
+.empty-space {
+  background-color: #eae1ed;
 }
 
 .pac-dot {
@@ -106,7 +111,9 @@ h3 {
   content: url("images/pacman.png");
   background-color: #eae1ed;
   border: none;
-  transition: transform 0.3s;
+  border-radius: 50%;
+  transition: transform 0.3s, remove 0.5s, add 0.5s;
+  transform: rotate(0deg);
 }
 
 .blinky {
