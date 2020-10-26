@@ -2,12 +2,15 @@ const width = 28;
 const grid = document.querySelector('.grid');
 const scoreDisplay = document.getElementById('score');
 const endMessage = document.getElementById('message');
+const callToAction = document.querySelector('.call-to-action')
 const overlay = document.querySelector('.overlay');
+let stopGame = false;
+let startGameExecuted = false;
 let currentKeyCode;
 let squares = [];
 let score = 0;
 // let powerPeletTimer = 0;
-
+console.log(startGameExecuted)
 // Codes for map-items position
 // 0 - pacdots
 // 1 - wall
@@ -72,7 +75,20 @@ createBoard()
 let pacmanCurrentIndex = 490
 squares[pacmanCurrentIndex].classList.add('pacman')
 
-
+// function startGame() {
+//   if (startGameExecuted === true) return
+//   overlay.style.transform = 'translateY(0)'
+//   endMessage.innerHTML = 'Welcome !'
+//   stopGame = true
+//   document.addEventListener('keyup', (e) => {
+//     if (e.keyCode === 13) {
+//       startGameExecuted = true
+//       stopGame = false
+//       overlay.style.transform = 'translateY(-100%)'
+//     }
+//   })
+// }
+// startGame()
 // const decrementPowerPeletTimer = () => {
 //   if (powerPeletTimer >= 1) {
 //     powerPeletTimer - 1000
@@ -82,6 +98,7 @@ squares[pacmanCurrentIndex].classList.add('pacman')
 // console.log(powerPeletTimer);
 
 function control(e) {
+  if (stopGame === true) return
   const pacman = document.querySelector('.pacman');
   console.log(pacman);
   currentKeyCode = e.keyCode
@@ -196,6 +213,7 @@ ghosts.forEach(ghost => {
 ghosts.forEach(ghost => moveGhost(ghost))
 
 function moveGhost(ghost) {
+  if (stopGame === true) return
   const directions = [-1, +1, -width, +width]
   let direction = directions[Math.floor(Math.random() * directions.length)]
   
@@ -237,8 +255,10 @@ function checkForGameOver() {
      ) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
       document.removeEventListener('keyup', control)
-      endMessage.innerHTML = 'You LOSE'
       overlay.style.transform = 'translateY(0)'
+      endMessage.innerHTML = 'GAME OVER'
+      callToAction.innerHTML = 'Try Again'
+      stopGame = true
      }
 }
 
@@ -247,7 +267,10 @@ function checkForWin() {
     if (score >= 278) {
       ghosts.forEach(ghost => clearInterval(ghost.timerId))
       document.removeEventListener('keyup', control)
-      endMessage.innerHTML = 'You WON! 🎉'
       overlay.style.transform = 'translateY(0)'
+      endMessage.innerHTML = 'You WON! 🎉'
+      callToAction.style.display = 'bloc'
+      callToAction.innerHTML = 'Play Again'
+      stopGame = true
     }
 }
