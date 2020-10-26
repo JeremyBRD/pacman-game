@@ -10,7 +10,6 @@ let currentKeyCode;
 let squares = [];
 let score = 0;
 // let powerPeletTimer = 0;
-console.log(startGameExecuted)
 // Codes for map-items position
 // 0 - pacdots
 // 1 - wall
@@ -274,3 +273,11 @@ function checkForWin() {
       stopGame = true
     }
 }
+
+// callToAction.addEventListener('click', (e, ghost) => {
+//   overlay.style.transform = 'translateY(-100%)';
+//   createBoard();
+//   control(e);
+//   moveGhost(ghost);
+//   stopGame = false;
+// });
