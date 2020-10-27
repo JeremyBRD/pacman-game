@@ -82,6 +82,7 @@ h3 {
   width: 476px;
   height: 476px;
   background-color: #eae1ed;
+  border-radius: 5px;
 }
 
 .grid div:not(.overlay) {
@@ -105,7 +106,7 @@ h3 {
 
 .power-pellet {
   background-color: green;
-  border-radius: 7.5px;
+  border-radius: 50%;
 }
 
 .pacman {

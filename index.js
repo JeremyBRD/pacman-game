@@ -257,7 +257,8 @@ function checkForGameOver() {
       overlay.style.transform = 'translateY(0)'
       endMessage.innerHTML = 'GAME OVER'
       callToAction.innerHTML = 'Try Again'
-      stopGame = true
+      stopGame = true      
+      playAgain();
      }
 }
 
@@ -271,13 +272,14 @@ function checkForWin() {
       callToAction.style.display = 'bloc'
       callToAction.innerHTML = 'Play Again'
       stopGame = true
+      playAgain();
     }
 }
 
-// callToAction.addEventListener('click', (e, ghost) => {
-//   overlay.style.transform = 'translateY(-100%)';
-//   createBoard();
-//   control(e);
-//   moveGhost(ghost);
-//   stopGame = false;
-// });
+function playAgain() {
+  window.addEventListener('click', () => {
+    overlay.style.transform = 'translateY(-100%)';
+    stopGame = false;
+    location.reload(true);
+  })
+}
