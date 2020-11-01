@@ -88,6 +88,7 @@ h3 {
 .grid div:not(.overlay) {
   width: 17px;
   height: 17px;
+  transition: all 0.5;
 }
 
 .empty-space {
